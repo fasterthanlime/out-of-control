@@ -11,7 +11,7 @@ public class Assault : MonoBehaviour {
 
 	void Start ()
     {
-        if (transform.position.x>0)
+        if (transform.position.x > 0)
         {
             direction = -1;
         }
@@ -29,8 +29,9 @@ public class Assault : MonoBehaviour {
 	
 	void Update ()
     {
-        //move
-        if (transform.position.x+direction*xSpeed*Time.deltaTime>4.5|| transform.position.x + direction * xSpeed * Time.deltaTime < -4.5)
+        // move
+        if (transform.position.x + direction * xSpeed * Time.deltaTime > 4.5 ||
+		    transform.position.x + direction * xSpeed * Time.deltaTime < -4.5)
         {
             direction *= -1;
         }
@@ -39,7 +40,7 @@ public class Assault : MonoBehaviour {
             transform.Translate(new Vector3(direction * xSpeed, 0, YSpeed) * Time.deltaTime);
         }
 
-        //check death
+        // check death
         if (Health <= 0)
         {
             Destroy(gameObject);
