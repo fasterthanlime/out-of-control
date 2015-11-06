@@ -22,17 +22,8 @@ public class PlayerGuns : MonoBehaviour
 	
 	void Update ()
 	{
-         
-
-		Transform oldLeft = LTurret;
-		Transform oldRight = RTurret;
-
-		if ((XCI.GetAxis (XboxAxis.RightStickX) < - precision) || (XCI.GetAxis (XboxAxis.RightStickX) > precision) || (XCI.GetAxis (XboxAxis.RightStickY) < - precision) || (XCI.GetAxis (XboxAxis.RightStickY) > precision)) {
-			LTurret.localRotation = Quaternion.Lerp (oldLeft.localRotation, Quaternion.Euler (0, Mathf.Atan2 (XCI.GetAxis (XboxAxis.RightStickX), -XCI.GetAxis (XboxAxis.RightStickY)) * 180 / Mathf.PI, 0), .5f);
-		}
-		if ((XCI.GetAxis (XboxAxis.LeftStickX) < - precision) || (XCI.GetAxis (XboxAxis.LeftStickY) > precision) || (XCI.GetAxis (XboxAxis.LeftStickY) < - precision) || (XCI.GetAxis (XboxAxis.LeftStickY) > precision)) {
-			RTurret.localRotation = Quaternion.Lerp (oldRight.localRotation, Quaternion.Euler (0, Mathf.Atan2 (XCI.GetAxis (XboxAxis.LeftStickX), -XCI.GetAxis (XboxAxis.LeftStickY)) * 180 / Mathf.PI, 0), .5f);
-		}
+		OrientTurret (XboxAxis.LeftStickX, XboxAxis.LeftStickY, RTurret);
+		OrientTurret (XboxAxis.RightStickX, XboxAxis.RightStickY, LTurret);
 
 		if (XCI.GetButton (XboxButton.RightStick)) {
 			if (_lCounter >= ShotDelay) {
@@ -55,5 +46,20 @@ public class PlayerGuns : MonoBehaviour
 		} else {
 			_rCounter = 0;
 		}
+	}
+
+	public void OrientTurret (XboxAxis xAxis, XboxAxis yAxis, Transform turret)
+	{
+		var x = XCI.GetAxis (xAxis);
+		var y = XCI.GetAxis (yAxis);
+		var t = .5f;
+
+		if (x > -precision && x < precision && y > -precision && y < precision) {
+			return;
+		}
+
+		var angleY = Mathf.Atan2 (x, y) * Mathf.Rad2Deg;
+		var newRotation = Quaternion.Euler (0, angleY, 0);
+		turret.localRotation = Quaternion.Lerp (turret.localRotation, newRotation, t);
 	}
 }
