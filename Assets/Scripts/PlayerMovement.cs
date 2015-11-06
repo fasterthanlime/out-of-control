@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using XboxCtrlrInput;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
@@ -18,8 +19,8 @@ public class PlayerMovement : MonoBehaviour {
 	
 	void Update ()
     {
-        triggerLeftValue = Input.GetAxis("TriggersR_1");
-        triggerRightValue = Input.GetAxis("TriggersL_1");
+        triggerLeftValue = XCI.GetAxis(XboxAxis.RightTrigger);
+		triggerRightValue = XCI.GetAxis(XboxAxis.LeftTrigger);
 
         Vector3 velocity = new Vector3(triggerLeftValue- triggerRightValue, 0,0);
         Vector3 newPos = transform.position + velocity * Time.deltaTime * Speed;
