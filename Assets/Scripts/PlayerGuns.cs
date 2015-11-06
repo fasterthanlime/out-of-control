@@ -10,7 +10,7 @@ public class PlayerGuns : MonoBehaviour
 	public Transform RTurret;
 	public Transform LTurretHelper;
 	public Transform RTurretHelper;
-	public GameObject BulletClass;
+	public GameObject Bullet;
 	public float ShotDelay;
 	private float _lCounter = 0;
 	private float _rCounter = 0;
@@ -37,7 +37,7 @@ public class PlayerGuns : MonoBehaviour
 		if (XCI.GetButton (XboxButton.RightStick)) {
 			if (_lCounter >= ShotDelay) {
 				_lCounter = 0;
-				Instantiate (BulletClass, LTurretHelper.position, LTurretHelper.rotation);
+				Instantiate (Bullet, LTurretHelper.position, LTurretHelper.rotation);
 			} else {
 				_lCounter += Time.deltaTime;
 			}
@@ -48,7 +48,7 @@ public class PlayerGuns : MonoBehaviour
 		if (XCI.GetButton (XboxButton.LeftStick)) {
 			if (_rCounter >= ShotDelay) {
 				_rCounter = 0;
-				Instantiate (BulletClass, RTurretHelper.position, RTurretHelper.rotation);
+				Instantiate (Bullet, RTurretHelper.position, RTurretHelper.rotation);
 			} else {
 				_rCounter += Time.deltaTime;
 			}

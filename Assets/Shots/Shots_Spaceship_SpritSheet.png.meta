@@ -1,9 +1,12 @@
 fileFormatVersion: 2
-guid: 47488c38d7b311d47b4c46c131ad9c26
-timeCreated: 1446844447
+guid: 9593fdf401d7af64abd364a8a120be87
+timeCreated: 1446830808
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Shots_Spaceship_SpritSheet_0
+    21300002: Shots_Spaceship_SpritSheet_1
+    21300004: Shots_Spaceship_SpritSheet_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +52,37 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Shots_Spaceship_SpritSheet_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 0
+        width: 82
+        height: 330
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shots_Spaceship_SpritSheet_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 82
+        height: 330
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Shots_Spaceship_SpritSheet_2
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 0
+        width: 82
+        height: 330
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

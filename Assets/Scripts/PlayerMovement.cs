@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour {
     public float Speed;
     public float maxYaw,maxRoll;
     public float camXswitch = 1.2f;
-    public GameObject minimap;
 
 
     void Start ()
@@ -31,17 +30,5 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         transform.localRotation = Quaternion.Euler(0, (triggerLeftValue-triggerRightValue)* maxYaw,  - (triggerLeftValue - triggerRightValue) * maxRoll);
-        if (transform.position.x < -camXswitch)
-        {
-            var rect = minimap.GetComponent<Camera>().rect;
-            rect.x = -0.7f;
-            minimap.GetComponent<Camera>().rect = rect;
-        }
-        if (transform.position.x > camXswitch)
-        {
-            var rect = minimap.GetComponent<Camera>().rect;
-            rect.x = 0.7f;
-            minimap.GetComponent<Camera>().rect = rect;
-        }
     }
 }

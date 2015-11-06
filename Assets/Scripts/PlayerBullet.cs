@@ -9,6 +9,6 @@ public class PlayerBullet : MonoBehaviour {
 	
 	void Update ()
     {
-        transform.Translate(0, 0, 10 * Time.deltaTime);
+        transform.Translate(0, 10 * Time.deltaTime, 0);
 	}
 }
