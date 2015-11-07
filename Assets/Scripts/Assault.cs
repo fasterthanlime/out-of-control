@@ -15,6 +15,8 @@ public class Assault : MonoBehaviour {
     int direction;
     private GameObject Player;
     public EnemyState EState = EnemyState.JumpingIn;
+    private float _counter;
+    public GameObject BulletClass;
 
 	void Start ()
     {
@@ -72,10 +74,29 @@ public class Assault : MonoBehaviour {
             transform.Translate(new Vector3(direction * xSpeed, 0, YSpeed) * Time.deltaTime);
         }
 
+        if (_counter>=2)
+        {
+            Fire();
+            _counter = 0;
+        }
+        else
+        {
+            _counter += Time.deltaTime;
+        }
+
         // check death
         if (Health <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    void Fire()
+    {
+        
+        GameObject obj=(GameObject)Instantiate(BulletClass, transform.position, transform.rotation);
+        obj.transform.LookAt(Player.transform.position);
+        obj.transform.Rotate(0, Random.Range(-5,6), 0);
+        obj.GetComponent<EnemyBullet>().Damage = 25;
     }
 }

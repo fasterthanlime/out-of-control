@@ -54,7 +54,7 @@ public class Manager : MonoBehaviour {
 
     void SpawnWave()
     {
-        int waveID = Random.Range(0, 3);
+        int waveID = Random.Range(2, 3);
 
         switch (waveID)
         {
