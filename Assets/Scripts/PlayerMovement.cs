@@ -29,8 +29,8 @@ public class PlayerMovement : MonoBehaviour {
             transform.position = newPos;
         }
 
-        LeftBooster.startSize = (float)(0.4f - 0.4 * triggerLeftValue);
-        RightBooster.startSize = (float)(0.4f - 0.4 * triggerRightValue);
+        LeftBooster.startSize = (float)(0.2f - 0.2 * triggerLeftValue);
+        RightBooster.startSize = (float)(0.2f - 0.2 * triggerRightValue);
 
         transform.localRotation = Quaternion.Euler(0, (triggerLeftValue-triggerRightValue)* maxYaw,  - (triggerLeftValue - triggerRightValue) * maxRoll);
     }
