@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
     public float Speed;
     public float maxYaw,maxRoll;
     public float camXswitch = 1.2f;
-
+    public ParticleSystem LeftBooster, RightBooster;
 
     void Start ()
     {
@@ -28,6 +28,9 @@ public class PlayerMovement : MonoBehaviour {
         {
             transform.position = newPos;
         }
+
+        LeftBooster.startSize = (float)(0.4f - 0.4 * triggerLeftValue);
+        RightBooster.startSize = (float)(0.4f - 0.4 * triggerRightValue);
 
         transform.localRotation = Quaternion.Euler(0, (triggerLeftValue-triggerRightValue)* maxYaw,  - (triggerLeftValue - triggerRightValue) * maxRoll);
     }

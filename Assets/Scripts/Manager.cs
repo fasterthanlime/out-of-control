@@ -54,7 +54,6 @@ public class Manager : MonoBehaviour {
 
     void SpawnWave()
     {
-        Debug.Log("hit");
         int waveID = Random.Range(0, 3);
 
         switch (waveID)
