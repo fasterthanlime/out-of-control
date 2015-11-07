@@ -39,7 +39,7 @@ public class PlayerGuns : MonoBehaviour
 		if (XCI.GetButton (XboxButton.RightStick)) {
 			if (_lCounter >= ShotDelay) {
 				_lCounter = 0;
-				clone = Instantiate (Bullet, LTurretHelper.position, LTurretHelper.rotation);
+				clone = (GameObject)Instantiate (Bullet, LTurretHelper.position, LTurretHelper.rotation);
 				clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
 				clone.GetComponent<PlayerBullet>().setColor();
 			} else {
@@ -52,7 +52,7 @@ public class PlayerGuns : MonoBehaviour
 		if (XCI.GetButton (XboxButton.LeftStick)) {
 			if (_rCounter >= ShotDelay) {
 				_rCounter = 0;
-				clone = Instantiate (Bullet, RTurretHelper.position, RTurretHelper.rotation);
+				clone = (GameObject)Instantiate (Bullet, RTurretHelper.position, RTurretHelper.rotation);
 				clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
 				clone.GetComponent<PlayerBullet>().setColor();
 			} else {
