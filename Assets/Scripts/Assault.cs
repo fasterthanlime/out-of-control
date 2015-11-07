@@ -55,7 +55,7 @@ public class Assault : MonoBehaviour {
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 10.2f, -16),.02f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 10.2f, -16),.05f);
         }
     }
 

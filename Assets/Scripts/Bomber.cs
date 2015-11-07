@@ -51,6 +51,12 @@ public class Bomber : MonoBehaviour {
     {
         float sine = transform.position.y + .01f*Mathf.Sin(3 * Time.time);
         transform.position = new Vector3(transform.position.x, sine, transform.position.z);
+
+        // check death
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetPlayerRef(GameObject player)
