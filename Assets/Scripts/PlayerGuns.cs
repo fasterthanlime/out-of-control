@@ -11,13 +11,15 @@ public class PlayerGuns : MonoBehaviour
 	public Transform LTurretHelper;
 	public Transform RTurretHelper;
 	public GameObject Bullet;
+	public string colorPower = "blue";
+	GameObject clone;
 	public float ShotDelay;
 	private float _lCounter = 0;
 	private float _rCounter = 0;
 
 	void Start ()
 	{
-	
+		
 	}
 	
 	void Update ()
@@ -37,7 +39,9 @@ public class PlayerGuns : MonoBehaviour
 		if (XCI.GetButton (XboxButton.RightStick)) {
 			if (_lCounter >= ShotDelay) {
 				_lCounter = 0;
-				Instantiate (Bullet, LTurretHelper.position, LTurretHelper.rotation);
+				clone = Instantiate (Bullet, LTurretHelper.position, LTurretHelper.rotation);
+				clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+				clone.GetComponent<PlayerBullet>().setColor();
 			} else {
 				_lCounter += Time.deltaTime;
 			}
@@ -48,12 +52,29 @@ public class PlayerGuns : MonoBehaviour
 		if (XCI.GetButton (XboxButton.LeftStick)) {
 			if (_rCounter >= ShotDelay) {
 				_rCounter = 0;
-				Instantiate (Bullet, RTurretHelper.position, RTurretHelper.rotation);
+				clone = Instantiate (Bullet, RTurretHelper.position, RTurretHelper.rotation);
+				clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+				clone.GetComponent<PlayerBullet>().setColor();
 			} else {
 				_rCounter += Time.deltaTime;
 			}
 		} else {
 			_rCounter = 0;
+		}
+	}
+
+	void setColor (){
+		if (colorPower == "Green") {
+			
+		}
+		if (colorPower == "Red") {
+			
+		}
+		if (colorPower == "Blue") {
+			
+		}
+		if (colorPower == "Yellow") {
+			
 		}
 	}
 }
