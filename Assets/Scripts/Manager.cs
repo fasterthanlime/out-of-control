@@ -13,6 +13,8 @@ public class Manager : MonoBehaviour {
     //manager vars
     private float _counter;
     public int SecondsBetweenWaves;
+    public AudioClip spawnSound;
+    public AudioSource source;
 
 	// Use this for initialization
 	void Start () {
@@ -54,7 +56,9 @@ public class Manager : MonoBehaviour {
 
     void SpawnWave()
     {
-        int waveID = Random.Range(2, 3);
+        int waveID = Random.Range(0, 3);
+        source.PlayOneShot(spawnSound, 0.7f);
+        
 
         switch (waveID)
         {

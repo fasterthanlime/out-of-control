@@ -57,7 +57,7 @@ public class Assault : MonoBehaviour {
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 10.2f, -16),.05f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 10.2f, -16),.01f);
         }
     }
 
@@ -98,5 +98,6 @@ public class Assault : MonoBehaviour {
         obj.transform.LookAt(Player.transform.position);
         obj.transform.Rotate(0, Random.Range(-5,6), 0);
         obj.GetComponent<EnemyBullet>().Damage = 25;
+        obj.GetComponent<EnemyBullet>().Speed = 10;
     }
 }

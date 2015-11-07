@@ -47,7 +47,7 @@ public class Bomber : MonoBehaviour {
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 11.2f, -16), .04f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 11.2f, -16), .01f);
         }
     }
 
@@ -97,7 +97,7 @@ public class Bomber : MonoBehaviour {
             obj.transform.LookAt(Player.transform.position);
             obj.transform.Rotate(0, Random.Range(-15, 16), 0);
             obj.GetComponent<EnemyBullet>().Damage = 20;
-            obj.GetComponent<EnemyBullet>().Speed = 0.4f;
+            obj.GetComponent<EnemyBullet>().Speed = 10f;
         }
 
         

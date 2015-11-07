@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour {
     public int MaxHealth;
     public int CurrentHealth;
     public int Score;
+    public GameObject SmallExplosion;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class PlayerStats : MonoBehaviour {
         if (CurrentHealth<=0)
         {
             PlayerPrefs.SetInt("Score", Score);
+            Application.LoadLevel("Menu");
         }
 	}
 
@@ -25,8 +27,14 @@ public class PlayerStats : MonoBehaviour {
         if (other.tag=="EBullet")
         {
             CurrentHealth-=other.GetComponent<EnemyBullet>().Damage;
+            Instantiate(SmallExplosion, other.transform.position, other.transform.rotation);
         }
     }
 
+    void OnGUI()
+    {
+        GUI.backgroundColor = Color.red;
+        GUI.Label(new Rect(20, Screen.height - 50, MaxHealth, 30), "");
+    }
 
 }

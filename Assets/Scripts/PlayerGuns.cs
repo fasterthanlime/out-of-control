@@ -10,10 +10,12 @@ public class PlayerGuns : MonoBehaviour
 	public Transform RTurret;
 	public Transform LTurretHelper;
 	public Transform RTurretHelper;
-	public GameObject Bullet;
-	public string colorPower = "blue";
+	public GameObject Laser;
+    public GameObject Plasma;
+    public GameObject Mine;
+	public string colorPower = "green";
 	GameObject clone;
-	public float ShotDelay;
+	public float ShotDelay=0.3f;
 	private float _lCounter = 0;
 	private float _rCounter = 0;
 
@@ -24,7 +26,7 @@ public class PlayerGuns : MonoBehaviour
 	
 	void Update ()
 	{
-         
+        CheckWeaponChange();
 
 		Transform oldLeft = LTurret;
 		Transform oldRight = RTurret;
@@ -36,26 +38,67 @@ public class PlayerGuns : MonoBehaviour
 			RTurret.localRotation = Quaternion.Lerp (oldRight.localRotation, Quaternion.Euler (0, Mathf.Atan2 (XCI.GetAxis (XboxAxis.LeftStickX), XCI.GetAxis (XboxAxis.LeftStickY)) * 180 / Mathf.PI, 0), .5f);
 		}
 
-		if (XCI.GetButton (XboxButton.RightStick)) {
-			if (_lCounter >= ShotDelay) {
+		if (XCI.GetButton (XboxButton.RightStick))
+        {
+			if (_lCounter >= ShotDelay)
+            {
 				_lCounter = 0;
-				clone = (GameObject)Instantiate (Bullet, LTurretHelper.position, LTurretHelper.rotation);
-				clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
-				clone.GetComponent<PlayerBullet>().setColor();
-			} else {
+				
+                switch (colorPower)
+                {
+                    case "green":
+                        clone = (GameObject)Instantiate (Laser, LTurretHelper.position, LTurretHelper.rotation);
+				        clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+				        clone.GetComponent<PlayerBullet>().setColor();
+                        break;
+                    case "blue":
+                        clone = (GameObject)Instantiate(Plasma, LTurretHelper.position, LTurretHelper.rotation);
+                        clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+                        clone.GetComponent<PlayerBullet>().setColor();
+                        break;
+                    case "red":
+                        clone = (GameObject)Instantiate(Mine, LTurretHelper.position, LTurretHelper.rotation);
+                        clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+                        clone.GetComponent<PlayerBullet>().setColor();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
 				_lCounter += Time.deltaTime;
 			}
-		} else {
+		}
+        else
+        {
 			_lCounter = 0;
 		}
 
 		if (XCI.GetButton (XboxButton.LeftStick)) {
 			if (_rCounter >= ShotDelay) {
 				_rCounter = 0;
-				clone = (GameObject)Instantiate (Bullet, RTurretHelper.position, RTurretHelper.rotation);
-				clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
-				clone.GetComponent<PlayerBullet>().setColor();
-			} else {
+                switch (colorPower)
+                {
+                    case "green":
+                        clone = (GameObject)Instantiate(Laser, RTurretHelper.position, RTurretHelper.rotation);
+                        clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+                        clone.GetComponent<PlayerBullet>().setColor();
+                        break;
+                    case "blue":
+                        clone = (GameObject)Instantiate(Plasma, RTurretHelper.position, RTurretHelper.rotation);
+                        clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+                        clone.GetComponent<PlayerBullet>().setColor();
+                        break;
+                    case "red":
+                        clone = (GameObject)Instantiate(Mine, RTurretHelper.position, RTurretHelper.rotation);
+                        clone.GetComponent<PlayerBullet>().weaponColor = colorPower;
+                        clone.GetComponent<PlayerBullet>().setColor();
+                        break;
+                    default:
+                        break;
+                }
+            } else {
 				_rCounter += Time.deltaTime;
 			}
 		} else {
@@ -77,4 +120,30 @@ public class PlayerGuns : MonoBehaviour
 			
 		}
 	}
+
+    void CheckWeaponChange()
+    {
+        if (XCI.GetButton(XboxButton.A))
+        {
+            colorPower = "green";
+            ShotDelay = .2f;
+            _lCounter = 0;
+            _rCounter = 0;
+        }
+        else if (XCI.GetButton(XboxButton.X))
+        {
+            colorPower = "blue";
+            ShotDelay = .6f;
+            _lCounter = 0;
+            _rCounter = 0;
+        }
+        else if (XCI.GetButton(XboxButton.B))
+        {
+            colorPower = "red";
+            ShotDelay = 1f;
+            _lCounter = 0;
+            _rCounter = 0;
+        }
+        
+    }
 }

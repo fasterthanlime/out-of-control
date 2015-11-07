@@ -14,7 +14,7 @@ public class Sniper : MonoBehaviour {
     public EnemyState EState = EnemyState.JumpingIn;
     private Vector3 targetPos =new Vector3(-0, 10.2f, -12);
     private float _Counter = 0;
-    private float JumpSpeed = 0.05f;
+    private float JumpSpeed = 0.01f;
     public GameObject BulletClass;
 
     // Use this for initialization
@@ -89,7 +89,7 @@ public class Sniper : MonoBehaviour {
         GameObject obj = (GameObject)Instantiate(BulletClass, transform.position, transform.rotation);
         obj.transform.LookAt(Player.transform.position);
         obj.GetComponent<EnemyBullet>().Damage = 80;
-        obj.GetComponent<EnemyBullet>().Speed = 8;
+        obj.GetComponent<EnemyBullet>().Speed = 12;
     }
 
     void DodgeUpdate()
